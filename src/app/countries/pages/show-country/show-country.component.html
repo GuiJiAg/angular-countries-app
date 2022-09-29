@@ -1,0 +1,59 @@
+<ng-container *ngIf="responseSearchCountry; else elseTemplate">
+    <div class="row">
+        <div class="col-12">
+            <h1>
+                <span>{{informationTexts.countryText}}</span>
+                <small>{{responseSearchCountry.name.common}}</small>
+            </h1>
+        </div>
+    </div> 
+
+    <div class="row">
+        <div class="col-4">
+            <h3>{{informationTexts.flagText}}</h3>
+            <img 
+                [src]="responseSearchCountry.flags.svg"
+                class="img-thumbnail"    
+            />
+        </div>
+        <div class="col">
+            <h3>{{informationTexts.informationText}}</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>{{informationTexts.populationText}}</strong>
+                    <span>{{responseSearchCountry.population | number}}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>{{informationTexts.numericCodeText}}</strong>
+                    <span>{{responseSearchCountry.ccn3}}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>{{informationTexts.alphaCodeText}}</strong>
+                    <span>{{responseSearchCountry.cca3}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+    <h3>{{informationTexts.translationsText}}</h3>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                <li 
+                    *ngFor="let translation of translations"
+                    class="list-group-item"
+                    >
+                    <strong>{{translation.language}}</strong>
+                    <span>{{translation.translation}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</ng-container>
+<!-- El "ng-template" muestra un elemento especial para el html. Se le puede dar un identificador tras el "#", de esta forma puede ser invocado por otros elementos del html de forma local -->
+<ng-template #elseTemplate>
+    <div class="alert alert-info">
+        Wait, please...
+    </div>
+</ng-template>

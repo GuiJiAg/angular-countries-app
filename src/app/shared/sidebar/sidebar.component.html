@@ -1,0 +1,27 @@
+<h2>{{title}}</h2>
+<hr>
+<ul class="list-group">
+    <!--En este caso solo se activará la clase "active" si estamos justo en la route del "pathMatch: full"-->
+    <li 
+        routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        class="list-group-item"
+        >
+        {{searchCountryTitle}}
+    </li>
+    <li 
+        routerLink="regions"
+        routerLinkActive="active"
+        class="list-group-item"
+        >
+        {{searchRegionsTitle}}
+    </li>
+    <li 
+        routerLink="countries-capitals"
+        routerLinkActive="active"
+        class="list-group-item"
+        >
+        {{searchCapitalsTitle}}
+    </li>
+</ul>

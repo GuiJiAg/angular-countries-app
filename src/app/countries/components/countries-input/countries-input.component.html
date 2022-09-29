@@ -1,0 +1,14 @@
+<form
+    (ngSubmit)="searchCountries()"
+    autocomplete="off"
+    >
+    <!--(input) se activa cuando se presiona una tecla-->
+    <input 
+        type="text"
+        name="search"
+        [placeholder]="placeHolder"
+        class="form-control"
+        [(ngModel)]="searchInput"
+        (input)="keyPressed($event)"
+    />
+</form>

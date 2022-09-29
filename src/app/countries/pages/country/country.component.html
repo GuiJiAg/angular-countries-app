@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col">
+        <!--(onEnter) es la función del componente hijo, y "searchCountry($event)" es la función del componente padre, siendo "$event" el valor emitido por la función hija-->
+        <app-countries-input
+            (onEnter)="searchCountries($event)"
+            (onDebounce)="suggestions($event)"
+            [placeHolder]="placeHolder"
+            >
+        </app-countries-input>
+    </div>
+</div>
+<hr>
+
+<ng-container *ngIf="countriesFounded === false; else elseTemplate">
+    <div class="alert alert-danger">
+        {{countriesNotFoundAlert}}
+    </div> 
+</ng-container>
+<!-- El "ng-template" muestra un elemento especial para el html. Se le puede dar un identificador tras el "#", de esta forma puede ser invocado por otros elementos del html de forma local -->
+<ng-template #elseTemplate>
+    <div *ngIf="responseSearchCountries.length" class="row">
+        <div class="col">
+            <app-countries-table [countries]="responseSearchCountries"></app-countries-table>
+        </div>
+    </div>
+</ng-template>
